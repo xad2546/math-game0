@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>คิดถึง อิงดาวววววว</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg1:#ffd9e8; --bg2:#ffeccf; --ink:#6a2c52; --soft:#9a5a80;
+  --pink:#ff5f9e; --pink2:#ff9cc6; --card:rgba(255,255,255,.78);
+  --star:#ffd54a; --star-edge:#ffb81f; --twinkle:#ffffff; --glow:rgba(255,95,158,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg1:#2b1745; --bg2:#10163b; --ink:#ffe8f2; --soft:#e2b6d0;
+    --pink:#ff7db3; --pink2:#ffb3d3; --card:rgba(255,255,255,.1);
+    --twinkle:#fff6bd; --glow:rgba(255,125,179,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg1:#2b1745; --bg2:#10163b; --ink:#ffe8f2; --soft:#e2b6d0;
+  --pink:#ff7db3; --pink2:#ffb3d3; --card:rgba(255,255,255,.1);
+  --twinkle:#fff6bd; --glow:rgba(255,125,179,.3);
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;min-height:100%;display:flex;align-items:center;justify-content:center;
+  font-family:"Mali","Noto Sans Thai","Sarabun",system-ui,sans-serif;
+  color:var(--ink);background:linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-color:var(--bg1);overflow-x:hidden;
+}
+#sky,#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#sky i{position:absolute;width:var(--s);height:var(--s);background:var(--twinkle);
+  clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
+  opacity:.2;animation:tw var(--d) ease-in-out infinite alternate;animation-delay:var(--l)}
+@keyframes tw{to{opacity:.95;transform:scale(1.35) rotate(20deg)}}
+.rise{position:absolute;bottom:-40px;animation:rise var(--d) linear forwards;opacity:.0}
+@keyframes rise{10%{opacity:.8}100%{transform:translate(var(--x),-110vh) rotate(var(--r));opacity:0}}
+
+main{position:relative;width:100%;max-width:440px;padding:28px 20px 36px;text-align:center}
+.from{margin:0 0 6px;font-size:.95rem;color:var(--soft)}
+.mascot{width:min(62vw,230px);height:auto;cursor:pointer;display:block;margin:0 auto;
+  filter:drop-shadow(0 14px 18px var(--glow));animation:bob 3.4s ease-in-out infinite;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;background:none;border:0;padding:0}
+.mascot:focus-visible,.btn:focus-visible{outline:3px solid var(--pink);outline-offset:6px;border-radius:24px}
+.mascot.wiggle{animation:wig .6s ease}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-2deg)}}
+@keyframes wig{25%{transform:rotate(-12deg) scale(1.08)}60%{transform:rotate(10deg) scale(1.08)}}
+.eye{transform-origin:center;transform-box:fill-box;animation:blink 4.2s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.hrt{transform-origin:center;transform-box:fill-box;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(1.2)}}
+
+h1{margin:14px 0 4px;font-size:clamp(2.4rem,11vw,3.4rem);line-height:1.15;font-weight:700;letter-spacing:.01em}
+h1 .name{display:block;color:var(--pink);
+  background:linear-gradient(90deg,var(--pink),#ffa86b);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.sub{margin:0 0 20px;color:var(--soft);font-size:1.05rem}
+.bubble{position:relative;background:var(--card);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-radius:28px;padding:18px 20px;min-height:4.2em;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;line-height:1.55;box-shadow:0 10px 26px var(--glow);margin:0 auto 20px}
+.bubble::before{content:"";position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;
+  background:var(--card);transform:rotate(45deg);border-radius:4px}
+.bubble span{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.96)}}
+.btn{font:inherit;font-weight:700;font-size:1.1rem;color:#fff;border:0;cursor:pointer;
+  padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,var(--pink),#ff8a5f);
+  box-shadow:0 8px 0 rgba(180,50,100,.35),0 14px 24px var(--glow);transition:transform .12s,box-shadow .12s;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.btn:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(180,50,100,.35),0 6px 12px var(--glow)}
+.choices{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.choices .btn{flex:1 1 150px;padding:14px 12px;font-size:1.05rem}
+.btn.alt{color:var(--ink);background:var(--card);border:2px solid var(--pink2);
+  box-shadow:0 8px 0 rgba(106,44,82,.18),0 14px 24px var(--glow)}
+.btn.alt:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(106,44,82,.18),0 6px 12px var(--glow)}
+@media (prefers-reduced-motion:reduce){
+  .mascot,.eye,.hrt,#sky i,.bubble span{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<div id="fx" aria-hidden="true"></div>
+
+<main>
+  <p class="from">แอบมาบอกอะไรหน่อย</p>
+
+  <button class="mascot" id="star" aria-label="จิ้มดาวน้อยเล่น">
+    <svg viewBox="0 0 200 200" role="img" aria-hidden="true">
+      <path d="M100 20 L122.3 69.3 L176.1 75.3 L136.1 111.7 L147 164.7 L100 138 L53 164.7 L63.9 111.7 L23.9 75.3 L77.7 69.3Z"
+            fill="var(--star)" stroke="var(--star)" stroke-width="22" stroke-linejoin="round"/>
+      <path d="M100 30 L118 72 L160 76" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="7" stroke-linecap="round"/>
+      <g class="eye"><ellipse cx="83" cy="103" rx="5" ry="7" fill="#5a2a3d"/><circle cx="85" cy="100" r="2" fill="#fff"/></g>
+      <g class="eye"><ellipse cx="117" cy="103" rx="5" ry="7" fill="#5a2a3d"/><circle cx="119" cy="100" r="2" fill="#fff"/></g>
+      <ellipse cx="70" cy="116" rx="8" ry="5" fill="#ff8fb5" opacity=".85"/>
+      <ellipse cx="130" cy="116" rx="8" ry="5" fill="#ff8fb5" opacity=".85"/>
+      <path d="M92 114 Q100 124 108 114" fill="none" stroke="#5a2a3d" stroke-width="3.5" stroke-linecap="round"/>
+      <path class="hrt" d="M170 28c-5-9-18-5-14 6 3 7 14 13 14 13s11-6 14-13c4-11-9-15-14-6z" fill="var(--pink)"/>
+    </svg>
+  </button>
+
+  <h1>คิดถึง <span class="name">อิงดาวววววว</span></h1>
+  <p class="sub">แล้วตัวเองล่ะ คิดถึงบ้างป่ะ</p>
+
+  <div class="bubble" aria-live="polite"><span id="msg">เลือกข้อนึงดิ 👇</span></div>
+
+  <div class="choices">
+    <button class="btn" id="yes">คิดถึงดิ 🥹</button>
+    <button class="btn alt" id="meh">ไม่คิดถึง 😝</button>
+  </div>
+</main>
+
+<script>
+(function(){
+  var sets={
+    yes:[
+      "ตั้งใจเรียนเด้ออออออออออ",
+      "คิดถึงเหมือนกันนนนน",
+      "มาจุ๊บบบบบบ"
+    ],
+    meh:[
+      "ไม่คิดถึงก็ต้องคิดถึง เพราะทางนี้คิดถึง 😤",
+      "ไม่คิดถึงหรอ งั้นขอบังคับให้คิดถึง เพราะทางนี้คิดถึงหนักมาก",
+      "ปฏิเสธไม่รับนะ ไม่คิดถึงก็ต้องคิดถึง เพราะทางนี้คิดถึงไปแล้ว",
+      "ขอปฏิเสธการปฏิเสธนะครับ ยังไงทางนี้ก็คิดถึงอยู่ดี 😏"
+    ],
+    poke:[
+      "จิ้มทำไมเนี่ย จั๊กจี้นะเว้ย 😆",
+      "โอ๊ย เบาๆ ดิ ดาวก็เจ็บเป็นนะ",
+      "จิ้มแล้วเขินอ่ะ อย่าเพิ่งดิ 🫣",
+      "ฮื้ออ จิ้มอีกละ ติดใจหรอ 55"
+    ]
+  };
+  var icons=["💖","⭐","✨","💗","🌟","💛","🩷"];
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var last={},fx=document.getElementById("fx");
+  var msg=document.getElementById("msg");
+  var star=document.getElementById("star"),yes=document.getElementById("yes"),meh=document.getElementById("meh");
+
+  // twinkling sky
+  var sky=document.getElementById("sky"),h="";
+  for(var k=0;k<26;k++){
+    h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;--s:'+(8+Math.random()*14).toFixed(0)+'px;--d:'+(1.6+Math.random()*2.4).toFixed(1)+'s;--l:'+(-Math.random()*3).toFixed(1)+'s"></i>';
+  }
+  sky.innerHTML=h;
+
+  // floating hearts in the background
+  function floater(){
+    if(document.hidden||reduce)return;
+    var e=document.createElement("span");
+    e.className="rise";
+    e.textContent=icons[Math.floor(Math.random()*icons.length)];
+    e.style.left=(Math.random()*96)+"%";
+    e.style.fontSize=(16+Math.random()*18)+"px";
+    e.style.setProperty("--d",(7+Math.random()*5)+"s");
+    e.style.setProperty("--x",((Math.random()-.5)*80)+"px");
+    e.style.setProperty("--r",((Math.random()-.5)*50)+"deg");
+    fx.appendChild(e);
+    e.addEventListener("animationend",function(){e.remove()});
+  }
+  setInterval(floater,900);
+
+  // burst of hearts at a point
+  function burst(x,y){
+    if(reduce)return;
+    for(var k=0;k<16;k++){
+      var p=document.createElement("span"),a=Math.random()*Math.PI*2,d=70+Math.random()*90;
+      p.textContent=icons[Math.floor(Math.random()*icons.length)];
+      p.style.cssText="position:absolute;left:"+x+"px;top:"+y+"px;font-size:"+(16+Math.random()*16)+"px;margin:-10px 0 0 -10px";
+      fx.appendChild(p);
+      var an=p.animate([
+        {transform:"translate(0,0) scale(.4)",opacity:1},
+        {transform:"translate("+Math.cos(a)*d+"px,"+(Math.sin(a)*d-40)+"px) scale(1.2)",opacity:1,offset:.6},
+        {transform:"translate("+Math.cos(a)*d*1.2+"px,"+(Math.sin(a)*d+30)+"px) scale(.8)",opacity:0}
+      ],{duration:900+Math.random()*400,easing:"cubic-bezier(.2,.7,.3,1)"});
+      an.onfinish=(function(el){return function(){el.remove()}})(p);
+    }
+  }
+
+  function send(el,set){
+    var pool=sets[set],k;
+    do{k=Math.floor(Math.random()*pool.length)}while(k===last[set]&&pool.length>1);
+    last[set]=k;
+    var next=msg.cloneNode(true);
+    next.textContent=pool[k];
+    msg.parentNode.replaceChild(next,msg);
+    msg=next;
+    var r=el.getBoundingClientRect();
+    burst(r.left+r.width/2,r.top+r.height/2);
+  }
+
+  yes.addEventListener("click",function(){send(yes,"yes")});
+  meh.addEventListener("click",function(){send(meh,"meh")});
+  star.addEventListener("click",function(){
+    star.classList.remove("wiggle");void star.offsetWidth;star.classList.add("wiggle");
+    send(star,"poke");
+  });
+  star.addEventListener("animationend",function(e){if(e.animationName==="wig")star.classList.remove("wiggle")});
+})();
+</script>
+</body>
+</html>
